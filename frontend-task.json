@@ -1,0 +1,25 @@
+{
+    "family": "blog-frontend",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "executionRoleArn": "arn:aws:iam::541551608125:role/ecsTaskExecutionRoleBlog",
+    "taskRoleArn": "arn:aws:iam::541551608125:role/ecsTaskExecutionRoleBlog",
+    "containerDefinitions": [
+        {
+            "name": "frontend",
+            "image": "541551608125.dkr.ecr.ap-south-1.amazonaws.com/blog-frontend:latest",
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true
+        }
+    ]
+}

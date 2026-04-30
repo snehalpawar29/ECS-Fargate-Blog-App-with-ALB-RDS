@@ -1,0 +1,44 @@
+{
+    "family": "blog-backend",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "executionRoleArn": "arn:aws:iam::541551608125:role/ecsTaskExecutionRoleBlog",
+    "taskRoleArn": "arn:aws:iam::541551608125:role/ecsTaskExecutionRoleBlog",
+    "containerDefinitions": [
+        {
+            "name": "backend",
+            "image": "541551608125.dkr.ecr.ap-south-1.amazonaws.com/blog-backend:latest",
+            "portMappings": [
+                {
+                    "containerPort": 5000
+                }
+            ],
+            "environment": [
+                {
+                    "name": "DB_HOST",
+                    "value": "blog-db.clg6asiweekj.ap-south-1.rds.amazonaws.com"
+                },
+                {
+                    "name": "DB_PORT",
+                    "value": "5432"
+                },
+                {
+                    "name": "DB_USER",
+                    "value": "postgres"
+                },
+                {
+                    "name": "DB_PASSWORD",
+                    "value": "postgres123"
+                },
+                {
+                    "name": "DB_NAME",
+                    "value": "blogdb"
+                }
+            ]
+        }
+    ]
+}
